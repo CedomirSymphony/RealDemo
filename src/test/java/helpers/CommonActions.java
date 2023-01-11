@@ -1,7 +1,7 @@
 package helpers;
 
+import com.github.javafaker.Faker;
 import java.io.IOException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,8 +16,14 @@ public class CommonActions {
         this.driver = driver;
     }
 
+    public static final int SLEEP_PERIOD_1s = 1000; //milliseconds
+
+    public static final int SLEEP_PERIOD_5s = 5000; //milliseconds
+
+    public static final int SLEEP_PERIOD_30s = 30000; //milliseconds
+
     public void clickElement(WebElement element, String log){
-        WebDriverWait wdWait = new WebDriverWait(driver,30);
+        WebDriverWait wdWait = new WebDriverWait(driver,SLEEP_PERIOD_5s);
         wdWait.until(ExpectedConditions.elementToBeClickable(element));
 
         Actions actions = new Actions(driver);
@@ -27,7 +33,7 @@ public class CommonActions {
     }
 
     public void inputText (WebElement element, String text, String log){
-        WebDriverWait wdWait = new WebDriverWait(driver,30);
+        WebDriverWait wdWait = new WebDriverWait(driver,SLEEP_PERIOD_30s);
         wdWait.until(ExpectedConditions.elementToBeClickable(element));
 
         Actions actions = new Actions(driver);
@@ -41,4 +47,5 @@ public class CommonActions {
     public void assertEqualsText(WebElement element, String expected, String log) throws IOException {
         Assert.assertEquals(element.getText(),expected,log);
     }
+    public Faker faker = new Faker();
 }

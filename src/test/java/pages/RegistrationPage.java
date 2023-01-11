@@ -19,15 +19,15 @@ public class RegistrationPage extends CommonActions {
     public By signUpButton = By.className("btn");
 
     public void inputUserNameField() {
-        inputText(driver.findElement(inputUserNameField),"Cedaaaaa","Uneto je ime");
+        inputText(driver.findElement(inputUserNameField),faker.name().firstName()+"che","Name is input");
     }
     public void inputUserEmailField() {
-        inputText(driver.findElement(inputUserEmailField),"Cedaaaaa@rrererreee.com","Unet je email");
+        inputText(driver.findElement(inputUserEmailField),faker.name().firstName()+"@cheda.com","Email is input");
     }
     public void inputUserPasswordField() {
-        inputText(driver.findElement(inputUserPasswordField),"password123","Unet je password");
+        inputText(driver.findElement(inputUserPasswordField),"password123","Password is input");
     }
     public void clickSignUpButton() {
-        clickElement(driver.findElement(signUpButton), "Kliknuo sam Sign up button");
+        clickElement(driver.findElement(signUpButton), "Sign up button is selected");
     }
 }
