@@ -30,4 +30,10 @@ public class RegistrationPage extends CommonActions {
     public void clickSignUpButton() {
         clickElement(driver.findElement(signUpButton), "Sign up button is selected");
     }
+    public void registerNewUser(){
+        inputUserNameField();
+        inputUserEmailField();
+        inputUserPasswordField();
+        clickSignUpButton();
+    }
 }

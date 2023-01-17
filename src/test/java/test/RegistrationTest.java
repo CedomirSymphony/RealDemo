@@ -10,7 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.w3c.dom.html.HTMLImageElement;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProfileSettings;
@@ -40,10 +39,7 @@ public class RegistrationTest {
         homePage.clickSignUpButtonLink();
 
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.inputUserNameField();
-        registrationPage.inputUserEmailField();
-        registrationPage.inputUserPasswordField();
-        registrationPage.clickSignUpButton();
+        registrationPage.registerNewUser();
 
         By feedElement = By.xpath("//*[contains(text(),'Your Feed')]");
 
@@ -56,37 +52,19 @@ public class RegistrationTest {
         homePage.clickSettingsProfile();
 
         ProfileSettings profileSettings = new ProfileSettings(driver);
-        profileSettings.inputURLProfilePicture();
-        profileSettings.inputUserName();
-        profileSettings.inputBio();
-        profileSettings.inputEmail();
-        profileSettings.inputPassword();
-        profileSettings.clickUpdateProfileButton();
+        profileSettings.fillProfileSettingsData();
 
         Thread.sleep(2000);
 
         homePage.clickSettingsProfile();
-
-        WebElement emailElement = driver.findElement(profileSettings.Email);
-        String userEmail = emailElement.getAttribute("value");
-
-//        WebElement l=driver.findElement(loginPage.inputLoginUserName());
-//        l.sendKeys(userEmail);
+        String userEmail = profileSettings.getEmail();
 
         homePage.clickLogoutButton();
         homePage.clickLoginButton();
-        Thread.sleep(3000);
+
         LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginUser(userEmail,"password123");
 
-//        WebElement l=driver.findElement(loginPage.inputLoginUserName());
-//        l.sendKeys(userEmail);
-        loginPage.inputLoginUserName();
-        loginPage.inputLoginPassword();
-        loginPage.clickLoginInButton();
-
-
-        //Thread.sleep(5000);
-
+        Thread.sleep(3000);
     }
-
 }

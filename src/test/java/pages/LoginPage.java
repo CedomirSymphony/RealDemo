@@ -12,18 +12,27 @@ public class LoginPage extends CommonActions {
         super(driver);
         this.driver = driver;
     }
+    public By inputLoginUserName = By.cssSelector("input[ng-model='$ctrl.formData.email']");
+    public By inputLoginPassword = By.cssSelector("input[ng-model='$ctrl.formData.password']");
+    public By loginInButton = By.cssSelector("button[ng-bind='$ctrl.title']");
 
-    public By inputLoginUserName = By.xpath("//input[contains(@placeholder, 'Username')]");
-    public By inputLoginPassword = By.xpath("//input[@placeholder='Password']");
-    public By loginInButton = By.xpath("//button[contains(text(),'Sign in')]");
-
-    public void inputLoginUserName(){
-        inputText(driver.findElement(inputLoginUserName),"Lewis@cheda.com","Username is added");
-    }
-    public void inputLoginPassword(){
-        inputText(driver.findElement(inputLoginPassword),"password123","Password is input");
-    }
-    public void clickLoginInButton() {
+//    public void inputLoginUserName(){
+//        inputText(driver.findElement(inputLoginUserName),"userEmail","Username is added");
+//    }
+//    public void inputLoginPassword(){
+//        inputText(driver.findElement(inputLoginPassword),"password123","Password is input");
+//    }
+//    public void clickLoginInButton() {
+//        clickElement(driver.findElement(loginInButton), "Log in button is selected");
+//    }
+//    public void fillLoginForm(){
+//        inputLoginUserName();
+//        inputLoginPassword();
+//        clickLoginInButton();
+//    }
+    public void loginUser(String username, String password){
+        inputText(driver.findElement(inputLoginUserName),username,"Username is added");
+        inputText(driver.findElement(inputLoginPassword),password,"Password is input");
         clickElement(driver.findElement(loginInButton), "Log in button is selected");
     }
 }

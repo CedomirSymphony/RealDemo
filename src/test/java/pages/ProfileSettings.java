@@ -3,6 +3,7 @@ package pages;
 import helpers.CommonActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ProfileSettings extends CommonActions {
 
@@ -43,5 +44,16 @@ public class ProfileSettings extends CommonActions {
     }
     public void clickUpdateProfileButton(){ clickElement(driver.findElement(UpdateProfileButton),"Kliknuo sam na Update profile");
     }
-
+    public void fillProfileSettingsData(){
+        inputURLProfilePicture();
+        inputUserName();
+        inputBio();
+        inputEmail();
+        inputPassword();
+        clickUpdateProfileButton();
+    }
+    public String getEmail() {
+        WebElement emailElement = driver.findElement(Email);
+        return emailElement.getAttribute("value");
+    }
 }
