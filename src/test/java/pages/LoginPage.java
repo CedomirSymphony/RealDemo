@@ -22,9 +22,9 @@ public class LoginPage extends CommonActions {
 //    public void inputLoginPassword(){
 //        inputText(driver.findElement(inputLoginPassword),"password123","Password is input");
 //    }
-//    public void clickLoginInButton() {
-//        clickElement(driver.findElement(loginInButton), "Log in button is selected");
-//    }
+    public void clickLoginInButton() {
+        clickElement(driver.findElement(loginInButton), "Log in button is selected");
+    }
 //    public void fillLoginForm(){
 //        inputLoginUserName();
 //        inputLoginPassword();
